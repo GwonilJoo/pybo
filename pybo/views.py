@@ -5,10 +5,14 @@ from django.http import HttpResponseNotAllowed
 from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+import logging
+
+
+logger = logging.getLogger('pybo')
 
 
 def index(request):
-    3/0 # 강제로 오류 발생
+    logger.info("INFO 레벨로 출력")
     page = request.GET.get('page', '1') # 페이지
     question_list = Question.objects.order_by('-create_date')
     paginator = Paginator(question_list, 10)
