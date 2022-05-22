@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
+    3/0 # 강제로 오류 발생
     page = request.GET.get('page', '1') # 페이지
     question_list = Question.objects.order_by('-create_date')
     paginator = Paginator(question_list, 10)
